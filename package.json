@@ -1,0 +1,15 @@
+{
+  "name": "package.json",
+  "version": "10.9.2",
+  "description": "intro",
+  "main": "first",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vennela",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1"
+  }
+}
