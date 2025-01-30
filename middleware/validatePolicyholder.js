@@ -1,7 +1,6 @@
 const { body, validationResult } = require('express-validator');
 
 const validatePolicyholder = [
-  body('id').isInt().withMessage('ID must be an integer'),
   body('name').isString().withMessage('Name must be a string'),
   body('address').isString().withMessage('Address must be a string'),
   (req, res, next) => {

@@ -1,9 +1,8 @@
 const { body, validationResult } = require('express-validator');
-const { getPolicyById } = require('../crud/policyCrud');
+const Policy = require('../models/policy');
 
 const validateClaim = [
-  body('id').isInt().withMessage('ID must be an integer'),
-  body('policyId').isInt().withMessage('Policy ID must be an integer'),
+  body('policyId').isString().withMessage('Policy ID must be a string'),
   body('amount').isFloat({ gt: 0 }).withMessage('Amount must be a positive number'),
   body('status').isString().withMessage('Status must be a string'),
   async (req, res, next) => {
@@ -12,7 +11,7 @@ const validateClaim = [
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const policy = getPolicyById(req.body.policyId);
+    const policy = await Policy.findOne({ id: req.body.policyId });
     if (!policy) {
       return res.status(400).json({ errors: [{ msg: 'Policy not found' }] });
     }
