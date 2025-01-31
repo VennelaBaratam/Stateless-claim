@@ -10,3 +10,4 @@ const claimSchema = new mongoose.Schema({
 const Claim = mongoose.model('Claim', claimSchema);
 
 module.exports = Claim;
+

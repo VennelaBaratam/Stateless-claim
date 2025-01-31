@@ -16,7 +16,7 @@ router.post('/', validatePolicy, async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const policy = await Policy.findOne({ id: req.params.id });
+    const policy = await Policy.findOne({ _id: req.params.id });
     if (policy) {
       res.send(policy);
     } else {
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', validatePolicy, async (req, res) => {
   try {
-    const policy = await Policy.findOneAndUpdate({ id: req.params.id }, req.body, { new: true });
+    const policy = await Policy.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
     if (policy) {
       res.send(policy);
     } else {
@@ -42,7 +42,7 @@ router.put('/:id', validatePolicy, async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const policy = await Policy.findOneAndDelete({ id: req.params.id });
+    const policy = await Policy.findOneAndDelete({ _id: req.params.id });
     if (policy) {
       res.status(204).send();
     } else {
